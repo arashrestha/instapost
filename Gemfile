@@ -64,3 +64,9 @@ gem 'acts_as_votable', '~>0.10.0'
 gem 'font-awesome-sass', '~> 4.6.2'
 
 gem 'will_paginate'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+
+ end 
