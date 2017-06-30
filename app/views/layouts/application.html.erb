@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Share Your Photos Online-Instapost</title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'insta.png' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="row">
+        <div class="nav_wrapper">
+          
+          <div class="col-md-4">
+            <span class="pull-left brand fa fa-instagram fa-3x"><%= link_to 'Instapost', browse_posts_path %></span>
+          </div>
+
+          <div class='col-md-2'>
+            <div class="input-group stylish-input-group">
+            <input type="text" class="form-control"  placeholder="Search" >
+              <span class="input-group-addon">
+                <button type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>  
+              </span>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <ul class="nav nav-tabs pull-right">
+              <%if user_signed_in? %>
+                <li><%= link_to 'Browse Posts', browse_posts_path %></li>
+                <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to 'Edit Settings', edit_user_registration_path %></li>
+                <li><%= link_to 'New Post', new_post_path %></li>
+                <li><%= link_to 'Profile', user_path(current_user)%></li>
+                <%else%>
+                <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                <li><%= link_to 'Log In', new_user_session_path %></li>
+              <%end%>
+            </ul>
+          </div>
+
+        </div> 
+      </div>
+    </div>
+    </nav>  
+     <div class="container">
+    <%= yield %>
+    </div>
+  </body>
+</html>
